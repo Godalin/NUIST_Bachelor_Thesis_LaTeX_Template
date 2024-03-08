@@ -20,7 +20,7 @@
 \setCJKfamilyfont{localheiti}[AutoFakeBold,AutoFakeSlant]{SimHei}
 \renewcommand{\heiti}{\CJKfamily{localheiti}}
 
-\setCJKfamilyfont{localkaishu}[AutoFakeBold,AutoFakeSlant]{[simkai.ttf]}
+\setCJKfamilyfont{localkaishu}[AutoFakeBold,AutoFakeSlant]{KaiTi}
 \renewcommand{\kaishu}{\CJKfamily{localkaishu}}
 
 \setmainfont{Times New Roman}
@@ -162,7 +162,7 @@
     \begin{titlepage}
         \begin{center}
             \vspace*{12mm}
-            \includegraphics[scale=1]{nuist_logo/nuist.pdf}
+            \includegraphics[scale=1]{./nuist_logo/nuist.pdf}
 
             \vspace*{1cm}
             \heiti\zihao{-1}本科生毕业论文(设计)\\
