@@ -100,20 +100,20 @@
 
 % 章节标题格式
 \ctexset {
-    section       = {
-        format    = {\zihao{4} \heiti  \raggedright}
-    },
-    subsection    = {
-        format    = {\zihao{5} \heiti  \raggedright}
-    },
-    subsubsection = {
-        format    = {\zihao{5} \songti \raggedright}
-    },
-    paragraph     = {
-        format    = {\zihao{5} \songti \raggedright},
-        runin     = false,
-        afterskip = {1.5ex \@plus .2ex}
-    } % 修正标题不换行的设置和段后间距
+  section       = {
+    format      = {\zihao{4} \heiti  \raggedright}
+  },
+  subsection    = {
+    format      = {\zihao{5} \heiti  \raggedright}
+  },
+  subsubsection = {
+    format      = {\zihao{5} \songti \raggedright}
+  },
+  paragraph     = {
+    format      = {\zihao{5} \songti \raggedright},
+    runin       = false,
+    afterskip   = {1.5ex \@plus .2ex}
+  } % 修正标题不换行的设置和段后间距
 }
 
 % 目录样式的设置
@@ -133,21 +133,35 @@
 {\thecontentslabel\hspace*{1em}} {\hspace*{-2.3em}}
 {\titlerule*[0.4pc]{.}\contentspage}
 
+
+
 % 参考文献格式
-\usepackage{gbt7714}
-\renewcommand*{\bibfont}{\zihao{-5}}
-\bibliographystyle{gbt7714-2005-numerical}
+% \usepackage{gbt7714}
+% \renewcommand*{\bibfont}{\zihao{-5}}
+% \bibliographystyle{gbt7714-2005-numerical}
 % 这里引用同目录下的 gbt7714-2005-numerical.bst，此文件有修改
 
-% 参考文献标题的格式
-\renewcommand{\refname}{
-    \vspace{2ex}
-    \section*{参考文献：}
-    \phantomsection
-    \addcontentsline{toc}{section}{参考文献}
+% 使用 biblatex 进行参考文献的引用
+\usepackage[backend=biber,style=gb7714-2015,gbnoauthor=true]{biblatex}
+\defbibheading{MyBibHeadingStyle}{
+  \pdfbookmark[1]{参考文献}{bookmark:参考文献}
+  \cftaddtitleline{toc}{section}{参考文献}{\thepage}
+  \begin{center}
+    \heiti \zihao{4}{参考文献}
+  \end{center}
 }
-\renewcommand{\bibsection}{\refname}
-\setlength{\bibsep}{0.25em} % 缩小参考文献列表项间距
+
+% 参考文献标题的格式
+% \renewcommand{\refname}{
+%   \vspace{2ex}
+%   \section*{参考文献：}
+%   \phantomsection
+%   \addcontentsline{toc}{section}{参考文献}
+% }
+% \renewcommand{\bibsection}{\refname}
+% \setlength{\bibsep}{0.25em} % 缩小参考文献列表项间距
+
+
 
 %%%%%%%%%% 格式命令 %%%%%%%%%%
 % 封面
@@ -159,97 +173,97 @@
 % #6: 指导老师
 % #7: 日期
 \newcommand{\cover}[7]{
-    \begin{titlepage}
-        \begin{center}
-            \vspace*{12mm}
-            \includegraphics[scale=1]{./nuist_logo/nuist.pdf}
+  \begin{titlepage}
+    \begin{center}
+      \vspace*{12mm}
+      \includegraphics[scale=1]{./nuist_logo/nuist.pdf}
 
-            \vspace*{1cm}
-            \heiti\zihao{-1}本科生毕业论文(设计)\\
+      \vspace*{1cm}
+      \heiti\zihao{-1}本科生毕业论文(设计)\\
 
-            \vspace*{6mm}
-            \includegraphics[scale=1]{nuist_logo/xiaohui.jpg}
+      \vspace*{6mm}
+      \includegraphics[scale=1]{nuist_logo/xiaohui.jpg}
 
-            \vspace*{16mm}
-            \zihao{3}{\bfseries \songti \hspace*{.3cm}题~~~~目~~~~}
-            \uline{\parbox[b]{120mm}{\center{\bfseries {#1}}}}
-            \hfill
+      \vspace*{16mm}
+      \zihao{3}{\bfseries \songti \hspace*{.3cm}题~~~~目~~~~}
+      \uline{\parbox[b]{120mm}{\center{\bfseries {#1}}}}
+      \hfill
 
-            \vspace*{24mm}
-            \zihao{-3}\songti{学生姓名}
-            \uline{\parbox[b]{58mm}{\center{#2}}}
-            \hfill
+      \vspace*{24mm}
+      \zihao{-3}\songti{学生姓名}
+      \uline{\parbox[b]{58mm}{\center{#2}}}
+      \hfill
 
-            \vspace*{1.6mm}
-            \zihao{-3}\songti{学~~~~~~~~号}
-            \uline{\parbox[b]{58mm}{\center{#3}}}
-            \hfill
+      \vspace*{1.6mm}
+      \zihao{-3}\songti{学~~~~~~~~号}
+      \uline{\parbox[b]{58mm}{\center{#3}}}
+      \hfill
 
-            \vspace*{1.0mm}
-            \zihao{-3}\songti{学~~~~~~~~院}
-            \uline{\parbox[b]{58mm}{\center{#4}}}
-            \hfill
+      \vspace*{1.0mm}
+      \zihao{-3}\songti{学~~~~~~~~院}
+      \uline{\parbox[b]{58mm}{\center{#4}}}
+      \hfill
 
-            \vspace*{1.0mm}
-            \zihao{-3}\songti{专~~~~~~~~业}
-            \uline{\parbox[b]{58mm}{\center{#5}}}
-            \hfill
+      \vspace*{1.0mm}
+      \zihao{-3}\songti{专~~~~~~~~业}
+      \uline{\parbox[b]{58mm}{\center{#5}}}
+      \hfill
 
-            \vspace*{1.0mm}
-            \zihao{-3}\songti{指导教师}
-            \uline{\parbox[b]{58mm}{\center{#6}}}
-            \hfill
+      \vspace*{1.0mm}
+      \zihao{-3}\songti{指导教师}
+      \uline{\parbox[b]{58mm}{\center{#6}}}
+      \hfill
 
-            \vspace*{20mm}
-            \bfseries\zihao{-2}{#7}
-        \end{center}
-    \end{titlepage}
-    \makestatement
+      \vspace*{20mm}
+      \bfseries\zihao{-2}{#7}
+    \end{center}
+  \end{titlepage}
+  \makestatement
 }
 
 % 声明
 \usepackage{enumerate}
 \newcommand{\makestatement}{
-    \newpage
-    \vspace*{0.3cm}
-    \begin{center}
-        \bf{\zihao{-1}{声\quad 明}}\\[1em]
-    \end{center}
-    \zihao{4}{~}
+  \newpage
+  \vspace*{0.3cm}
+  \begin{center}
+    \bf{\zihao{-1}{声\quad 明}}\\[1em]
+  \end{center}
+  \zihao{4}{~}
 
-    \noindent\zihao{3}{本人郑重声明：}
+  \noindent\zihao{3}{本人郑重声明：}
 
-    \begin{enumerate}[1、\hspace*{1em}]
-        \item 以“求实、创新”的科学精神从事科学研究工作。
-        \item 本论文中除引文外，所有测试、数据和相关材料均为真实有效的。
-        \item 本论文是我个人在指导教师的指导下进行的研究工作和取得的研究成果，请勿用于非法用途。
-        \item 本论文中除引文和致谢的内容外，并未抄袭其他人或其他机构已经发表或撰写过的研究成果。
-        \item 关于其他同志对本研究所做的贡献均已在论文中作了声明并表示了谢意。
-    \end{enumerate}
+  \begin{enumerate}[1、\hspace*{1em}]
+  \item 以“求实、创新”的科学精神从事科学研究工作。
+  \item 本论文中除引文外，所有测试、数据和相关材料均为真实有效的。
+  \item 本论文是我个人在指导教师的指导下进行的研究工作和取得的研究成果，请勿用于非法用途。
+  \item 本论文中除引文和致谢的内容外，并未抄袭其他人或其他机构已经发表或撰写过的研究成果。
+  \item 关于其他同志对本研究所做的贡献均已在论文中作了声明并表示了谢意。
+  \end{enumerate}
 
-    \vspace*{8em}
+  \vspace*{8em}
 
-    \begin{flushright}
-        \zihao{3}{作者签名：\quad \quad \quad \quad }
+  \begin{flushright}
+    \zihao{3}{作者签名：\quad \quad \quad \quad }
 
-        \zihao{3}{日期：\quad 年\quad 月\quad 日}
-    \end{flushright}
+    \zihao{3}{日期：\quad 年\quad 月\quad 日}
+  \end{flushright}
 
-    \zihao{5}{~}
-    \thispagestyle{empty}
-    \newpage
+  \zihao{5}{~}
+  \thispagestyle{empty}
+  \newpage
 }
 
 % 目录
 \newcommand{\mytableofcontents}{
-    \pagenumbering{Roman}
-    \renewcommand{\contentsname}{}
-    {\zihao{3}\heiti
-        \begin{center}
-            目\quad 录
-        \end{center}}
-    \vspace*{-4.5em}
-    \tableofcontents
+  \pagenumbering{Roman}
+  \renewcommand{\contentsname}{}
+  {\zihao{3}\heiti
+    \begin{center}
+      目\quad 录
+    \end{center}}
+  \vspace*{-4.5em}
+  \tableofcontents
 }
 
 % 摘要页中文标题
@@ -257,27 +271,29 @@
 % #2: 作者
 % #3: 学院
 \newcommand{\maketitleofchinese}[3]{
-    \newpage
-    \begin{center}
-        \zihao{3} \heiti #1
+  \newpage
+  \begin{center}
+    \zihao{3} \heiti #1
 
-        \zihao{5} ~ \vspace*{0.8em}
+    \zihao{5} ~ \vspace*{0.8em}
 
-        \zihao{4} \songti #2 \vspace*{0.5em}
+    \zihao{4} \songti #2 \vspace*{0.5em}
 
-        \zihao{-5} 南京信息工程大学#3学院，江苏\ 南京\ 210044
-        
-        \zihao{5} ~
-    \end{center}
+    \zihao{-5} 南京信息工程大学#3学院，江苏\ 南京\ 210044
+
+    \zihao{5} ~
+  \end{center}
 }
+
+
 % 摘要页中文摘要
 % #1: 摘要
 % #2: 关键词
 \newcommand{\abstractofchinese}[2]{
-    \noindent \zihao{5} \heiti 摘要：\zihao{5}\kaishu{#1}
+  \noindent \zihao{5} \heiti 摘要：\zihao{5}\kaishu{#1}
 
-    \noindent \zihao{5} \heiti 关键词：\zihao{5}\kaishu{#2}
-    \songti \zihao{5}
+  \noindent \zihao{5} \heiti 关键词：\zihao{5}\kaishu{#2}
+  \songti \zihao{5}
 }
 
 % 摘要页英文标题
@@ -285,42 +301,42 @@
 % #2: 作者
 % #3: 学院
 \newcommand{\maketitleofenglish}[3]{
-    \newpage
-    \begin{center}
-        \zihao{3} \textbf{#1}
+  \newpage
+  \begin{center}
+    \zihao{3} \textbf{#1}
 
-        \zihao{5} ~ \vspace*{0.8em}
+    \zihao{5} ~ \vspace*{0.8em}
 
-        \zihao{4} #2 \vspace*{0.5em}
+    \zihao{4} #2 \vspace*{0.5em}
 
-        \zihao{-5} #3，NUIST，Nanjing 210044，China
+    \zihao{-5} #3，NUIST，Nanjing 210044，China
 
-        \zihao{5} ~
-    \end{center}
+    \zihao{5} ~
+  \end{center}
 }
 % 摘要页英文摘要
 % #1: 摘要内容
 % #2: 关键词
 \newcommand{\abstractofenglish}[2]{
-    \noindent \zihao{5} \textbf{Abstract：} \zihao{5} #1
+  \noindent \zihao{5} \textbf{Abstract：} \zihao{5} #1
 
-    \noindent \zihao{5} \textbf{Key words：} \zihao{5} #2
-    \newpage
+  \noindent \zihao{5} \textbf{Key words：} \zihao{5} #2
+  \newpage
 }
 
 % 致谢标题
 % #1: 致谢内容
 \newcommand{\thanking}[1]{
-    \clearpage
+  \clearpage
 
-    \begin{center}
-        \zihao{4} \heiti 致谢
-    \end{center}
-    \phantomsection
-    \addcontentsline{toc}{section}{致谢}
+  \begin{center}
+    \zihao{4} \heiti 致谢
+  \end{center}
+  \phantomsection
+  \addcontentsline{toc}{section}{致谢}
 
-    \vspace{1.6em} \par
-    \zihao{5}\kaishu #1
+  \vspace{1.6em} \par
+  \zihao{5}\kaishu #1
 }
 %%%%%%%%%% 格式命令 %%%%%%%%%%
 
@@ -328,8 +344,8 @@
 % 四级标题，不显示在目录中，需要自行添加标题编号，如：（1）
 % 替代：使用 LaTeX 的 \paragraph 命令，\forthsection 将在未来版本中弃用
 \newcommand{\forthsection}[1]{
-    \vspace*{0.4em}
-    \noindent\zihao{5}{#1}
-    \vspace*{0.6em}
+  \vspace*{0.4em}
+  \noindent\zihao{5}{#1}
+  \vspace*{0.6em}
 }
 %%%%%%%%%% WARN：弃用命令！ %%%%%%%%%%
