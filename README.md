@@ -1,6 +1,6 @@
 # 南京信息工程大学本科生毕业论文 LaTeX 模板
 
-版本：2022
+版本：2024
 
 这是一份南京信息工程大学本科生毕业论文 LaTeX 模板，请使用 XeLaTeX 编译。**提醒：本文档是非官方版**
 
@@ -12,6 +12,8 @@
 2. TeX Live 2021
 3. Visual Studio Code
 4. package `gbt7714` v2.0 (2020-03-04) 以上 [GB/T 7714 BibTeX style 版本 v2.0 的重要修改](https://mirrors.concertpass.com/tex-archive/biblio/bibtex/contrib/gbt7714/gbt7714.pdf)
+
+2024修订者的留言：强推 Emacs，编辑 LaTeX 巨爽。
 
 ## 文件目录
 
@@ -72,6 +74,18 @@
 > > 1. 增加 algorithm 和 algorithmic 包排版伪代码
 > > 1. 使用 \paragraph 代替 \forthsection
 > > 1. 修复参考文献标题上方过多的空白
+>
+> - 2024/03
+>
+> > 1. 楷体字体使用文件名改为使用 KaiTi 英文名，和宋体、黑体等一致
+> > 2. 修改nuist.cls文件中，\usepackage的使用不规范，改为\RequirePackage
+> > 3. 使用流行的biblatex宏包进行参考文献的管理
+> > 4. 将一些页面控制显式地放在论文主文件中，共使用者参考
+> > 5. 依据南京信息工程大学 2024 年毕业论文（设计）模板进行修订，具体内容包括
+> > > (a) 修改声明页
+> > > (b) 修改字体大小
+> > > (c) 修改致谢和附录的位置
+> > > (d) 后面的忘了
 
 ## TODO
 
