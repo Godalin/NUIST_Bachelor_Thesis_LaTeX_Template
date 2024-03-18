@@ -149,7 +149,7 @@
 
 % 2024版修订者：新版本使用 biblatex 进行文献管理，
 % 这是更流行的做法 ;)
-\RequirePackage[backend=biber,style=gb7714-2015,gbnoauthor=true]{biblatex}
+\RequirePackage[backend=biber,style=gb7714-2015,gbnoauthor=true,gbnamefmt=lowercase]{biblatex}
 \defbibheading{myBibHeadingStyle}{
   \pdfbookmark[1]{参考文献}{bookmark:参考文献}
   \cftaddtitleline{toc}{section}{参考文献}{\thepage}
