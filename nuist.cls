@@ -44,11 +44,12 @@
 % 设置脚注格式
 \renewcommand{\thefootnote}{\arabic{footnote}〕}
 
-% \RequirePackage{setspace}
+% 行距
 \linespread{1.625}
 % 1.5倍行距：此处注意行距的换算
 % 1.5 ∗ 1.3 / 1.2 = 1.625
 % 参考 https://blog.csdn.net/weixinhum/article/details/104594454
+% 临时行距变换使用 {\linespread{xxx}\selectfont ... \par}, 参考 lshort
 
 % 算法伪代码
 \RequirePackage{algorithm}
@@ -171,13 +172,16 @@
 % #5: 专业
 % #6: 指导老师
 % #7: 日期
-\newcommand{\cover}[7]{
+\newcommand{\covertrans}[8]{
   \begin{titlepage}
-    {\zihao{-4}\songti 单位代码：\underline{\mbox{~~~10300~~~}}}
+    {\zihao{-4}\songti 单位代码：\underline{~~~~10300~~~~}}
+    \vspace*{2ex}
     \begin{center}
-      \includegraphics[scale=1]{./nuist_logo/nuist.pdf}
+      \includegraphics[scale=1]{./nuist_logo/nuist_zh_2024.png}
 
-      \heiti\zihao{1}本科生毕业论文/设计{\zihao{3}（择其一）}
+      \emptyline{5}
+
+      {\bfseries\heiti\zihao{1}本科毕业设计英文翻译}
 
       \emptyline{5}
 
@@ -185,37 +189,43 @@
 
       \emptyline{5}
 
-      \zihao{3}{\bfseries\heiti\hspace*{.3cm}题~~~~目~~~~}
-      \uline{\parbox[b]{120mm}{\center{\bfseries {#1}}}}
+      \zihao{-2}{\heiti 原文题目}
+      \underline{\parbox[b]{130mm}{
+          \centering\linespread{1}\selectfont #1
+        }}
+
+      \vspace*{2ex}
+
+      \zihao{-2}{\heiti 译文题目}
+      \underline{\parbox[b]{130mm}{
+          \centering\linespread{1}\selectfont #2
+        }}
 
       \emptyline{5}
 
-      \zihao{-3}\songti{学生姓名：}
-      \uline{\parbox[b]{58mm}{\center{#2}}}
-      \hfill
-
-      \vspace*{1.6mm}
-      \zihao{-3}\songti{学~~~~~~~~号：}
+      \zihao{-3}\heiti{学生姓名：}
       \uline{\parbox[b]{58mm}{\center{#3}}}
       \hfill
 
-      \vspace*{1.0mm}
-      \zihao{-3}\songti{学~~~~~~~~院：}
+      \zihao{-3}\heiti{学~~~~~~~~号：}
       \uline{\parbox[b]{58mm}{\center{#4}}}
       \hfill
 
-      \vspace*{1.0mm}
-      \zihao{-3}\songti{专~~~~~~~~业：}
+      \zihao{-3}\heiti{专~~~~~~~~业：}
       \uline{\parbox[b]{58mm}{\center{#5}}}
       \hfill
 
-      \vspace*{1.0mm}
-      \zihao{-3}\songti{指导教师：}
+      \zihao{-3}\heiti{学~~~~~~~~院：}
       \uline{\parbox[b]{58mm}{\center{#6}}}
+      \hfill
+
+      \zihao{-3}\heiti{指导教师：}
+      \uline{\parbox[b]{58mm}{\center{#7}}}
+      \hfill
 
       \emptyline{-2}
 
-      {\zihao{-3}\songti #7}
+      {\zihao{-3}\songti #8}
     \end{center}
   \end{titlepage}
 }
@@ -270,18 +280,18 @@
 
 % 目录页
 \newcommand{\mytableofcontents}{{
-  \renewcommand{\contentsname}{
-    \begin{center}
-      \zihao{3}\heiti
-      目\quad{}\quad{}录
-    \end{center}
+    \renewcommand{\contentsname}{
+      \begin{center}
+        \zihao{3}\heiti
+        目\quad{}\quad{}录
+      \end{center}
 
-    % {\zihao{5}~}% \vspace*{-4.5em}
-  }
-  \tableofcontents
+      % {\zihao{5}~}% \vspace*{-4.5em}
+    }
+    \tableofcontents
 
-  \clearpage
-}}
+    \clearpage
+  }}
 
 
 
@@ -290,23 +300,37 @@
 % #2: 作者
 % #3: 学院
 \newcommand{\maketitleofchinese}[3]{{
-  \begin{center}
-    \zihao{3}\heiti #1\\
-    \zihao{5}~\\
-    \zihao{4}\songti #2\\
-    \zihao{5}南京信息工程大学#3学院，江苏~南京~210044\\
-    \zihao{5}~
-  \end{center}
-}}
+    \begin{center}
+      \zihao{3}\heiti #1\\
+      \zihao{5}~\\
+      \zihao{4}\songti #2\\
+      \zihao{5}南京信息工程大学#3学院，江苏~南京~210044\\
+    \end{center}
+  }}
+
+% 翻译摘要页中文标题
+% #1: 论文题目
+% #2: 作者
+% #3: 学院
+\newcommand{\maketitleofchinesetrans}[3]{{
+    \begin{center}
+      \zihao{3}\heiti #1\\
+      \zihao{5}~\\
+      {\zihao{-4}\bfseries\songti #2}\\
+      {\zihao{5}#3}\\
+    \end{center}
+  }}
+
 
 % 摘要页中文摘要
 % #1: 摘要
 % #2: 关键词
 \newcommand{\abstractofchinese}[2]{{
-  \noindent{\zihao{-4}\heiti 摘要：}{\zihao{-4}\kaishu #1}\par
-  \noindent{\zihao{-4}\heiti 关键词：}{\zihao{-4}\kaishu #2}
-  \clearpage
-}}
+    {\linespread{1.625}\selectfont
+      \noindent{\zihao{-4}\heiti 摘要：}{\zihao{-4}\kaishu #1}\par}
+    \noindent{\zihao{-4}\heiti 关键词：}{\zihao{-4}\kaishu #2}
+    \clearpage
+  }}
 
 
 
@@ -315,14 +339,13 @@
 % #2: 作者
 % #3: 学院
 \newcommand{\maketitleofenglish}[3]{{
-  \begin{center}
-    \zihao{3}\textbf{#1}\\
-    \zihao{5}~\\
-    \zihao{4} #2\\
-    \zihao{5} #3，NUIST，Nanjing 210044，China\\
-    \zihao{5}~
-  \end{center}
-}}
+    \begin{center}
+      \zihao{3}\textbf{#1}\\
+      \zihao{5}~\\
+      \zihao{4} #2\\
+      \zihao{5} #3，NUIST，Nanjing 210044，China\\
+    \end{center}
+  }}
 
 % 摘要页英文摘要
 % #1: 摘要内容
