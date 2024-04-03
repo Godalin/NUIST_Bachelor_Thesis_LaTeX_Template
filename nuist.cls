@@ -165,14 +165,13 @@
 
 %%%%%%%%%% 格式命令 %%%%%%%%%%
 % 论文封面
-% #1: 英文题目 （自行调整字体大小和分行）
-% #2: 中文题目
-% #3: 学生姓名
-% #4: 学号
-% #5: 专业
-% #6: 学院
-% #7: 指导老师
-% #8: 日期
+% #1: 题目
+% #2: 学生姓名
+% #3: 学号
+% #4: 专业
+% #5: 学院
+% #6: 指导老师
+% #7: 日期
 \newcommand{\cover}[7]{
   \begin{titlepage}
     {\zihao{-4}\songti 单位代码：\underline{~~~~10300~~~~}}
@@ -198,28 +197,28 @@
       \emptyline{5}
 
       \zihao{-3}\heiti{学生姓名：}
-      \uline{\parbox[b]{58mm}{\center{#3}}}
+      \uline{\parbox[b]{58mm}{\center{#2}}}
       \hfill
 
       \zihao{-3}\heiti{学~~~~~~~~号：}
-      \uline{\parbox[b]{58mm}{\center{#4}}}
+      \uline{\parbox[b]{58mm}{\center{#3}}}
       \hfill
 
       \zihao{-3}\heiti{专~~~~~~~~业：}
-      \uline{\parbox[b]{58mm}{\center{#5}}}
+      \uline{\parbox[b]{58mm}{\center{#4}}}
       \hfill
 
       \zihao{-3}\heiti{学~~~~~~~~院：}
-      \uline{\parbox[b]{58mm}{\center{#6}}}
+      \uline{\parbox[b]{58mm}{\center{#5}}}
       \hfill
 
       \zihao{-3}\heiti{指导教师：}
-      \uline{\parbox[b]{58mm}{\center{#7}}}
+      \uline{\parbox[b]{58mm}{\center{#6}}}
       \hfill
 
       \emptyline{-2}
 
-      {\zihao{-3}\songti #8}
+      {\zihao{-3}\songti #7}
     \end{center}
   \end{titlepage}
 }
